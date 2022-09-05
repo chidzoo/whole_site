@@ -1,6 +1,6 @@
 name: Lint Code Base
 
-on: [push, pull_request]
+on: push
 
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
       - name: Apply changes in Terraform 
         if: ${{ success() }}
         run: |
-          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/chidzoo/tech_test/actions/workflows/build.yaml/dispatches --data '{"ref": "master"}'
+          curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PAT_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/chidzoo/tech_test/actions/workflows/terraform.yml/dispatches --data '{"ref": "master"}'
